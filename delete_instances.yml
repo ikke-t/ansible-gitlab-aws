@@ -1,0 +1,39 @@
+---
+
+- hosts: "tag_identity_git"
+  connection: "local"
+  gather_facts: false
+  vars_files:
+    - vars/vault.yml
+    - vars/main.yml
+
+  tasks:
+  - name: "Remove tagged EC2 instances from security group"
+    ec2:
+      state: "running"
+      region: "{{ ec2_region }}"
+      instance_ids: "{{ ec2_id }}"
+      group_id: ""
+    delegate_to: "localhost"
+
+  - name: "Terminate tagged EC2 instances"
+    ec2:
+      state: "absent"
+      region: "{{ ec2_region }}"
+      instance_ids: "{{ ec2_id }}"
+      wait: true
+    delegate_to: "localhost"
+
+
+- hosts: "localhost"
+  connection: "local"
+  gather_facts: false
+  vars_files:
+    - vars/vault.yml
+    - vars/main.yml
+  tasks:
+  - name: "Remove security group"
+    ec2_group:
+      name: "{{ ec2_security_group }}"
+      region: "{{ ec2_region }}"
+      state: "absent"

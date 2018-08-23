@@ -1,0 +1,5 @@
+vault-password.txt
+add-subs.yml
+roles/gitlab
+roles/rhn
+vars/vault.yml
