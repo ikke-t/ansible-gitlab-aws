@@ -1,0 +1,4 @@
+---
+
+vault_ec2_access_key: FOOBAR
+vault_ec2_secret_key: 'lostsofscrambledtexthere'
