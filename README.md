@@ -10,7 +10,7 @@ for our Ansible roadshow. I save it here for further needs.
 3. set boto for aws keys too
 4. add vault-password.txt file
 5. to install, run:
-  5.1. ```ansible-vault --vault-password-file vault-password.txt encrypt vars/vault-example.yml```
-  5.2. ```ansible-playbook --vault-password-file vault-password.txt -i inventory/ec2.py do_all.yml```
+    1. ```ansible-vault --vault-password-file vault-password.txt encrypt vars/vault-example.yml```
+    2. ```ansible-playbook --vault-password-file vault-password.txt -i inventory/ec2.py do_all.yml```
 6. To decommission the instance, run:
-  6.1. ```ansible-playbook --vault-password-file vault-password.txt -i inventory/ec2.py delete_instances.yml```
+    1. ```ansible-playbook --vault-password-file vault-password.txt -i inventory/ec2.py delete_instances.yml```
